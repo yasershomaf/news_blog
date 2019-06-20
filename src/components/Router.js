@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect, NavLink } from 'react-router-do
 
 import Home from './Home';
 import About from './About';
-import Details from './Details';
+import Article from './Article';
 
 import '../styles/router.css';
 
@@ -16,7 +16,7 @@ export default function Router() {
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route exact path='/about' component={About}/>
-      <Route path='/details' component={Details}/>
+      <Route path='/article' component={Article}/>
       <Redirect to='/'/>
     </Switch>
     <footer></footer>

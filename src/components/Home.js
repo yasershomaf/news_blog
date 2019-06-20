@@ -15,23 +15,21 @@ export default class Home extends Component {
     }
   }
   articlesFetchHandler = () => {
-
-    const defaultSearchQueries = {category: 'all', page: '1'};
-    let searchQueries;
+    const defaultSearchQueries = {category: 'general', page: '1'};
     if (this.props.location.search) {
-      searchQueries = this.props.location.search.slice(1).split('&').reduce((acc, currentQuery) => {
+      this.searchQueries = this.props.location.search.slice(1).split('&').reduce((acc, currentQuery) => {
         const splitIndex = currentQuery.indexOf('=');
         acc = {...acc, [currentQuery.slice(0, splitIndex)] : currentQuery.slice(splitIndex + 1)};
         return acc;
       }, defaultSearchQueries);
     }
     else {
-      searchQueries = defaultSearchQueries;
+      this.searchQueries = defaultSearchQueries;
     }
     fetch(
       `https://newsapi.org/v2/top-headlines?country=nl&apiKey=d64511a0d5c2408f8f8f5ae1ff72c38b&pageSize=12&page=${
-        searchQueries.page
-      }${searchQueries.category !== 'all' ? `&category=${searchQueries.category}` : ''}`
+        this.searchQueries.page
+      }&category=${this.searchQueries.category}`
     )
     .then(res => res.json())
     .then(results => {
@@ -49,7 +47,9 @@ export default class Home extends Component {
       <div className='articles_container'>
         {this.state && this.state.articles ? this.state.articles.map((article, index) => <ArticleCard
           key={index}
-          details={article}
+          index={index}
+          searchQueries={this.searchQueries}
+          article={article}
         />) : ''}
       </div>
     </Fragment>;

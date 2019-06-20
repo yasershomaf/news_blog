@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import '../styles/details.css';
+import '../styles/article.css';
 
-export default class Details extends Component {
+export default class Article extends Component {
   render() {
+    console.log(this.props)
     return (
       <div>
         

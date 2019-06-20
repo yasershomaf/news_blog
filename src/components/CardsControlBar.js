@@ -17,16 +17,16 @@ export default withRouter(class CardsControlBar extends Component {
       this.pushHistoryHandler({...this.searchQueries, page: this.searchQueries.page * 1 + 1 + ''});
     }
   };
-  pushHistoryHandler = path => {
-    let newPath = Object.keys(path).reduce((acc, currentKey) => {
-      acc += `${currentKey}=${path[currentKey]}&`;
+  pushHistoryHandler = queries => {
+    let newPath = Object.keys(queries).reduce((acc, currentKey) => {
+      acc += `${currentKey}=${queries[currentKey]}&`;
       return acc;
     }, `${this.props.location.pathname}?`);
     newPath = newPath.slice(0, newPath.length - 1);
     this.props.history.push(newPath);
   }
   render() {
-    const defaultSearchQueries = {category: 'all', page: '1'};
+    const defaultSearchQueries = {category: 'general', page: '1'};
     if (this.props.location.search) {
       this.searchQueries = this.props.location.search.slice(1).split('&').reduce((acc, currentQuery) => {
         const splitIndex = currentQuery.indexOf('=');
@@ -37,7 +37,7 @@ export default withRouter(class CardsControlBar extends Component {
     else {
       this.searchQueries = defaultSearchQueries;
     }
-    const categories = ['all', 'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
+    const categories = ['general', 'business', 'entertainment', 'health', 'science', 'sports', 'technology'];
 
     return <div className='cards_control_bar'>
       <div>Category: </div>
