@@ -1,0 +1,10 @@
+.article_card {
+    width: 30%;
+    box-shadow: 0 0 5px gray;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.article_card_image {
+    width: 100%;
+}

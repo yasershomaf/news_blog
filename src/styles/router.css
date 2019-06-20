@@ -1,0 +1,17 @@
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header {
+    margin: 20px 0;
+}
+.nav_link {
+    font-size: 24px;
+    color: black;
+    margin: 0 10px 0 0;
+    text-decoration: none;
+}
+.active_link {
+    border-bottom: 2px solid black;
+}

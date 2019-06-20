@@ -1,0 +1,26 @@
+.cards_control_bar {
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.prev_button, .nxt_button {
+    box-sizing: border-box;
+    height: 20px;
+    width: 10px;
+    margin: 0 5px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    cursor: pointer;
+}
+.prev_button {
+    border-right: 10px solid #5781c6;
+}
+.nxt_button {
+    border-left: 10px solid #5781c6;
+}
+.prev_button:hover {
+    border-right: 10px solid #0854d1;
+}
+.nxt_button:hover {
+    border-left: 10px solid #0854d1;
+}
