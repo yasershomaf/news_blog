@@ -47,8 +47,6 @@ export default class Home extends Component {
       <div className='articles_container'>
         {this.state && this.state.articles ? this.state.articles.map((article, index) => <ArticleCard
           key={index}
-          index={index}
-          searchQueries={this.searchQueries}
           article={article}
         />) : ''}
       </div>

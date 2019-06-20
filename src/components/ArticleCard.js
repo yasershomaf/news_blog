@@ -3,14 +3,9 @@ import {Link} from 'react-router-dom';
 
 import '../styles/articleCard.css';
 
-export default function ArticleCard({article, searchQueries, index}) {
-  let searchQueriesString = Object.keys(searchQueries).reduce((acc, currentKey) => {
-    acc += `${currentKey}=${searchQueries[currentKey]}&`;
-    return acc;
-  }, '');
-  searchQueriesString += `index=${index}`;
+export default function ArticleCard({article}) {
   return <Link to={{
-    pathname: `/article/?${searchQueriesString}`,
+    pathname: '/article',
     state: {
       article: article
     }
