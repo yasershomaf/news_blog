@@ -1,0 +1,14 @@
+.footer_container {
+    background-color: black;
+    height: 100px;
+}
+.footer_nav_container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+.footer_nav_container > a {
+    color: white;
+    text-decoration: none;
+}

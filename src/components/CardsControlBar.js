@@ -7,6 +7,9 @@ export default withRouter(class CardsControlBar extends Component {
   categoryChangeHandler = e => {
     this.pushHistoryHandler({...this.searchQueries, category: e.target.value});
   };
+  sortChangeHandler = e => {
+    this.pushHistoryHandler({...this.searchQueries, sort: e.target.value});
+  }
   prevPageHandler = () => {
     if (this.searchQueries.page !== '1') {
       this.pushHistoryHandler({...this.searchQueries, page: this.searchQueries.page - 1 + ''});
@@ -26,7 +29,7 @@ export default withRouter(class CardsControlBar extends Component {
     this.props.history.push(newPath);
   }
   render() {
-    const defaultSearchQueries = {category: 'general', page: '1'};
+    const defaultSearchQueries = {category: 'general', page: '1', sort: 'newfirst'};
     if (this.props.location.search) {
       this.searchQueries = this.props.location.search.slice(1).split('&').reduce((acc, currentQuery) => {
         const splitIndex = currentQuery.indexOf('=');
@@ -40,9 +43,14 @@ export default withRouter(class CardsControlBar extends Component {
     const categories = ['general', 'business', 'entertainment', 'health', 'science', 'sports', 'technology'];
 
     return <div className='cards_control_bar'>
-      <div>Category: </div>
+      <div>Category:</div>
       <select value={this.searchQueries.category} onChange={this.categoryChangeHandler}>
         {categories.map((category, index) => <option key={index} value={category}>{category}</option>)}
+      </select>
+      <div>Sort by:</div>
+      <select value={this.searchQueries.sort} onChange={this.sortChangeHandler}>
+        <option value='newfirst'>New first</option>
+        <option value='oldfirst'>Old first</option>
       </select>
       <div className='prev_button' onClick={this.prevPageHandler}/>
       <div>Page {this.searchQueries.page}</div>

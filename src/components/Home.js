@@ -15,7 +15,7 @@ export default class Home extends Component {
     }
   }
   articlesFetchHandler = () => {
-    const defaultSearchQueries = {category: 'general', page: '1'};
+    const defaultSearchQueries = {category: 'general', page: '1', sort: 'newfirst'};
     if (this.props.location.search) {
       this.searchQueries = this.props.location.search.slice(1).split('&').reduce((acc, currentQuery) => {
         const splitIndex = currentQuery.indexOf('=');
@@ -38,6 +38,24 @@ export default class Home extends Component {
       }
     });
   };
+  sortHandler = (firstElement, secondElement) => {
+    if (this.searchQueries.sort === 'newfirst') {
+      if (firstElement.publishedAt < secondElement.publishedAt) {
+        return 1;
+      }
+      else {
+        return -1;
+      }
+    }
+    else {
+      if (firstElement.publishedAt > secondElement.publishedAt) {
+        return 1;
+      }
+      else {
+        return -1;
+      }
+    }
+  }
   render() {
     return <Fragment>
       {this.state && this.state.totalResults ?
@@ -45,7 +63,7 @@ export default class Home extends Component {
         ''
       }
       <div className='articles_container'>
-        {this.state && this.state.articles ? this.state.articles.map((article, index) => <ArticleCard
+        {this.state && this.state.articles ? this.state.articles.sort(this.sortHandler).map((article, index) => <ArticleCard
           key={index}
           article={article}
         />) : ''}
