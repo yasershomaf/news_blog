@@ -1,5 +1,5 @@
 # News Blog
-> React application developed to show categorized news according to your interest. It can also be sorted from new news to old and vice versa
+> React application developed to show categorized news according to your interest. It can also be sorted from new news to old and vice versa via News API
 
 ## Features
 - Fetching news
